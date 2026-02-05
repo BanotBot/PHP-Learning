@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculate the Date return</title>
 </head>
 <body>
 
-    <?php 
+    <?php
 
-        $birthdate = "Nov 26 1983";    
-        $date = new DateTime($birthdate);
+        $birthdate = "Nov 26 1983";
+        $convert = new DateTime($birthdate);
+        $convert->format("Y-m-d");
 
-        $year = $date->format("Y");
-        $month = $date->format("m");
-        $day = $date->format("d");
-
-        $currentDate = date("d");
-        $currentYear = date("Y");
-        $currentMonth = date("m");
-
-        echo "current Month : $month <br>";
-        echo "year $year";
-        echo "currentYear : $currentYear";
-
-        $age = $currentYear - $year;
-        if ($currentMonth < $month) {
-            $age - 1;
-        }
-
-        echo "Age :  $age";
+        $currentDate = new DateTime("2026-02-05");
+        $currentDate->format("Y-m-d");
+        
+        $interval = date_diff($convert, $currentDate);
+        $days = $interval->format("%d") - 1;
+        
+        echo $interval->format("Y : %y \n M : %m \nD: $days %a");
     ?>
+
 </body>
 </html>
