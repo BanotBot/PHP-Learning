@@ -13,13 +13,14 @@
         $convert = new DateTime($birthdate);
         $convert->format("Y-m-d");
 
-        $currentDate = new DateTime("2026-02-05");
+        $currentDate = new DateTime();
         $currentDate->format("Y-m-d");
         
         $interval = date_diff($convert, $currentDate);
         $days = $interval->format("%d") - 1;
         
-        echo $interval->format("Y : %y \n M : %m \nD: $days %a");
+        echo $interval->format("Y : %y \nM : %m \nD: $days");
+        
     ?>
 
 </body>
